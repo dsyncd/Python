@@ -1,0 +1,21 @@
+#This is for reference/proof of concept as we ended up getting api access which lead to someone else working on it.
+
+from lxml import html
+import requests
+
+page = requests.get('http://www.lexingtonkymls.com/communities/market-statistics/')
+tree = html.fromstring(page.content)
+
+lexxp = tree.xpath('//*[@class="market_box"]')[0].text_content()
+danxp = tree.xpath('//*[@class="market_box"]')[1].text_content()
+gtxp  = tree.xpath('//*[@class="market_box"]')[2].text_content()
+hbxp  = tree.xpath('//*[@class="market_box"]')[3].text_content()
+lanxp = tree.xpath('//*[@class="market_box"]')[4].text_content()
+lawxp = tree.xpath('//*[@class="market_box"]')[5].text_content()
+nicxp = tree.xpath('//*[@class="market_box"]')[6].text_content()
+parxp = tree.xpath('//*[@class="market_box"]')[7].text_content()
+ricxp = tree.xpath('//*[@class="market_box"]')[8].text_content()
+verxp = tree.xpath('//*[@class="market_box"]')[9].text_content()
+winxp = tree.xpath('//*[@class="market_box"]')[10].text_content()
+
+print ('stats',lexxp,danxp,gtxp,hbxp,lanxp,lawxp,nicxp,parxp,ricxp,verxp,winxp)

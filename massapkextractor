@@ -1,0 +1,19 @@
+#extracts each apk file in a directory with apktool and extracts it them to an output folder with numbered folders.
+import subprocess
+import os
+
+#point to where apk packages live
+directory = 'enter directory of apks here'
+
+#only counting to store output files into new folders
+count = 0
+
+
+
+for filename in os.listdir(directory):
+  f = os.path.join(directory,filename)
+
+  if os.path.isfile(f):
+  	count += 1
+
+  	runapk = subprocess.run(["apktool","d",f,"-o",directory,"output/"+str(count),"-f"])
